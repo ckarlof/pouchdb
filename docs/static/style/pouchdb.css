@@ -1,122 +1,150 @@
-@import "https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700";
+/*** GLOBAL TAG DEFINITIONS ***/
+* {
+  box-sizing: border-box;
+}
 
 html {
   overflow-y: scroll;
 }
 
 body {
-  color: #777777;
-  font: 300 14px/1.5 Lato,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  margin: 40px auto;
-  width: 860px;
+  margin: 0;
+  font: 300 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #3399CC;
-  font-weight: 400;
   text-decoration: none;
 }
 
+p {
+  margin: 0 0 15px 0;
+}
+
+/*** UTILITY CLASSES ***/
+
+/*** GLOBAL LAYOUT ***/
+
+#headerwrapper, #footerwrapper, #content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
 header {
-  float: left;
-  position: fixed;
-  width: 270px;
-}
-
-h1 {
-  font-size: 28px;
-  color: black;
-}
-
-h1, h2, h3 {
-  line-height: 1.1;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: #222;
-  margin: 0 0 20px;
-}
-
-h3, h4, h5, h6 {
-    color: #494949;
-}
-
-header h5 {
-  margin-top: 0;
-  font-weight: normal;
+  background: #111;
+  overflow: auto;
 }
 
 header h1 {
-  margin-bottom: 0;
+  margin: 0;
 }
 
-header h1 a {
-  color: black;
-  font-weight: bold;
+header a {
+  color: #CCC;
 }
 
-header h1 a:hover {
-  text-decoration: underline;
+header nav {
+  float: right;
 }
 
-nav ul {
+header ul {
+  list-style-type: none;
+}
+
+header li {
+  float: left;
+  margin-left: 20px;
+}
+
+header h1 {
+  float: left;
+}
+
+footer {
+  margin-top: 50px;
+  background: #333;
+  overflow: auto;
+  padding-bottom: 20px;
+}
+
+footer section {
+  min-width: 240px;
+  float: left;
+}
+
+footer ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
-nav li {
-  margin: 0 0 15px;
+footer a {
+  color: #FFF;
 }
 
-nav a {
-  font-size: 21px;
-  line-height: 1.1;
+footer h2 {
+  color: #666;
+  font-weight: normal;
+  margin-bottom: 0px;
 }
 
 #content {
-  float: right;
-  padding-bottom: 50px;
-  width: 550px;
-}
-
-pre {
-  background: none repeat scroll 0 0 #002B36;
-  width: 100%;
   overflow: auto;
-  font-size: 12px;
 }
 
-pre, code {
-  color: #333333;
-  font-family: Monaco,Bitstream Vera Sans Mono,Lucida Console,Terminal;
-  font-size: 12px;
+/*** PAGE LAYOUT - HOME ***/
+
+#content h1 {
+  font-weight: normal;
+  font-size: 36px;
 }
 
-#download-button {
-  border: 0;
-  font-size: 14px;
-  padding: 10px 10px 10px 40px;
-  background: #DDD url(./noun_project_5618.svg) no-repeat 10px center;
-  background-size: 24px 24px;
-  border-radius: 3px;
-  margin-top: 10px;
-  cursor: pointer;
+#home1 {
+  margin-top: 20px;
+  overflow: auto;
 }
-#download-button:hover {
-  background-color: #CCC;
-}
-
-header section {
+#home1 section {
+  width: 50%;
   float: left;
-  background: #EEE;
-  padding-top: 5px;
+}
+#home1 section:last-child {
+  text-align: center;
 }
 
-header section input {
-  margin-left: 10px;
+#home2 {
+  margin-top: 20px;
+  overflow: auto;
 }
 
-nav {
-  padding-top: 10px;
-  clear: both;
+#home2 section {
+  width: 309px;
+  float: left;
+  border-right: 1px solid #666;
+  padding: 5px;
+  overflow: hidden;
+  height: 100%;
+}
+
+#home2 section:last-child {
+  width: 310px;
+  border-right: 0;
+}
+
+#home2 section h2 {
+  text-align: center;
+}
+
+#download {
+  text-align: left;
+}
+
+/*** PAGE LAYOUT - LEARN ***/
+
+#learn-nav {
+  width: 200px;
+  float: left;
+}
+
+#learn-content {
+  width: 700px;
+  float: right;
 }

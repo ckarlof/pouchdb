@@ -3,20 +3,48 @@ layout: default
 title: PouchDB, the JavaScript Database that Syncs!
 ---
 
-# PouchDB
+# The Database that Syncs!
 
-PouchDB is a JavaScript library that allows you to store and query data for web applications that need to work offline, and sync with an online database when you are online.
+<div id="home1">
+  <section>
+    <p>PouchDB is a small embedable Database written in Javascript and inspired by Apache CouchDB,
+      it allows your application to store data locally so your applications always work
+      even while offline and syncs that data online transparently so your users always
+      have most up to date data possible. </p>
+  </section>
+  <section>
+    <button id="download">
+      Download Latest Stable<br />
+      <small>(pouchdb-0.1.0.js 51KB)</small>
+    </button><br />
+    <a href="/">Learn More</a>
+  </section>
+</div>
 
-### The Browser Database that Syncs
+<div id="home2">
+  <section>
+    <h2>Install</h2>
+    <code>&lt;script src="pouchdb.js"&gt;&lt;/script&gt;</code>
+    <h5 style="text-align:center">or</h5>
+    <code>npm install pouchdb</code>
+  </section>
+  <section>
+    <h2>Save Data</h2>
+    <pre><code>var db = new Pouch('mydatabase');
 
-Based on the work of Apache CouchDB, PouchDB provides a simple API in which to store and retrieve JSON objects, due to the similiar API, and CouchDB's HTTP API it is possible to sync data that is stored in your local PouchDB to an online CouchDB as well as syncing data from CouchDB down to PouchDB (you can even sync between 2 PouchDB databases).
+db.put({
+ some: 'data',
+ random: 'json'
+});</code></pre>
+  </section>
+  <section>
+    <h2>Sync!</h2>
+    <pre><code>var remote = 'http://a.com/mydb';
+db.replicate.to(remote);
+db.replicate.from(remote);</code></pre>
+  </section>
+</div>
 
-### Status & Browser Support
+## Blog Posts
 
-PouchDB is currently in alpha preview. Currently tested in:
-
- * Firefox 12+
- * Chrome 19+
- * Opera 12+
- * Safari 5+
- * node.js
+### PouchDB 0.1.0 Released.
