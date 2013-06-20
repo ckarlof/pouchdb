@@ -12,6 +12,25 @@ var call = function(fun) {
   }
 };
 
+var L = require('logger');
+
+// btoa and atob aren't in the jetpack top level scope
+if (typeof btoa === 'undefined') {
+  btoa = require("sdk/base64").encode;
+}
+
+if (typeof atob === 'undefined') {
+  atob = require("sdk/base64").decode;
+}
+
+if (typeof setTimeout === 'undefined') {
+  setTimeout = require('timers').setTimeout;
+}
+
+if (typeof clearTimeout === 'undefined') {
+  clearTimeout = require('timers').clearTimeout;
+}
+
 // Wrapper for functions that call the bulkdocs api with a single doc,
 // if the first result is an error, return an error
 var yankError = function(callback) {
@@ -308,19 +327,22 @@ var isCordova = function(){
   return (typeof cordova !== "undefined" || typeof PhoneGap !== "undefined" || typeof phonegap !== "undefined");
 };
 
-if (typeof module !== 'undefined' && module.exports) {
+if (typeof module !== 'undefined' && module.exports && typeof global !== 'undefined') {
   // use node.js's crypto library instead of the Crypto object created by deps/uuid.js
-  var crypto = require('crypto');
-  var Crypto = {
+  var Crypto = null;
+  var cryptoModule = 'crypto';
+  var crypto = require(cryptoModule);
+  Crypto = {
     MD5: function(str) {
       return crypto.createHash('md5').update(str).digest('hex');
     }
   };
-  var extend = require('./deps/extend');
-  var ajax = require('./deps/ajax');
 
-  request = require('request');
-  _ = require('underscore');
+  var extend = require('.'+'/deps/extend');
+  var ajax = require('.'+'/deps/ajax');
+
+  request = require('req'+'uest');
+  _ = require('under'+'score');
   $ = _;
 
   module.exports = {
@@ -367,7 +389,7 @@ var Changes = function() {
       api.notify(e.db_name.newValue);//object only has oldValue, newValue members
     });
   }
-  else {
+  else if (typeof window !== 'undefined') {
     window.addEventListener("storage", function(e) {
       api.notify(e.key);
     });
@@ -395,7 +417,9 @@ var Changes = function() {
     //do a useless change on a storage thing
     //in order to get other windows's listeners to activate
     if (!isChromeApp()){
-      localStorage[db_name] = (localStorage[db_name] === "a") ? "b" : "a";
+      if (typeof localStorage !== 'undefined') {
+        localStorage[db_name] = (localStorage[db_name] === "a") ? "b" : "a";
+      }
     } else {
       chrome.storage.local.set({db_name: db_name});
     }

@@ -95,7 +95,7 @@ var ajax = function ajax(options, callback) {
         }
         call(onSuccess, data, xhr, callback);
       } else {
-         call(onError, xhr, callback);
+        call(onError, xhr, callback);
       }
     };
     if (options.timeout > 0) {
